@@ -26,7 +26,7 @@ const style = {
   statsContainer: `w-[44vw] flex justify-between py-4 border border-[#151b22] rounded-xl mb-4`,
   collectionStat: `w-1/4`,
   statValue: `text-3xl font-bold w-full flex items-center justify-center`,
-  ethLogo: `h-6 mr-2`,
+  maticLogo: `h-6 mr-2 rounded-full`,
   statName: `text-lg w-full text-center mt-1`,
   description: `text-[#8a939b] text-xl w-max-1/4 flex-wrap mt-4`,
 };
@@ -58,6 +58,25 @@ const Collection = () => {
     })();
   }, [nftModule]);
 
+  const marketPlaceModule = useMemo(() => {
+    if (!provider) return;
+
+    const sdk = new ThirdwebSDK(
+      provider.getSigner(),
+      "https://polygon-mumbai.g.alchemy.com/v2/2WEpP5_Y_DqK-iAGUC_eZihxniFTI0sX"
+    );
+    return sdk.getMarketplaceModule(
+      "0x497cb27aCfdBf6f463e733DB90bA0E9e7021CED2"
+    );
+  }, [provider]);
+
+  useEffect(() => {
+    if (!marketPlaceModule) return;
+    (async () => {
+      setListings(await marketPlaceModule.getAllListings());
+    })();
+  }, [marketPlaceModule]);
+
   const fetchCollectionData = async (sanityClient = client) => {
     const query = `*[_type == "marketItems" && contractAddress == "${collectionId}" ] {
       "imageUrl": profileImage.asset->url,
@@ -72,9 +91,6 @@ const Collection = () => {
     }`;
 
     const collectionData = await sanityClient.fetch(query);
-
-    console.log(collectionData, "🔥");
-
     await setCollection(collectionData[0]);
   };
 
@@ -155,9 +171,9 @@ const Collection = () => {
             <div className={style.collectionStat}>
               <div className={style.statValue}>
                 <img
-                  src="https://gateway.pinata.cloud/ipfs/QmXFNMV6FMrU6KszaxfujJgQupFNJa1k4fR5GdcB6emEdF"
-                  alt="eth"
-                  className={style.ethLogo}
+                  src="https://gateway.pinata.cloud/ipfs/QmY3CUTEuFcUyktqh7BEVzeFYGdiAB5KD5Fn9cey69MhEZ"
+                  alt="matic"
+                  className={style.maticLogo}
                 />
                 {collection?.floorPrice}
               </div>
@@ -166,9 +182,9 @@ const Collection = () => {
             <div className={style.collectionStat}>
               <div className={style.statValue}>
                 <img
-                  src="https://gateway.pinata.cloud/ipfs/QmXFNMV6FMrU6KszaxfujJgQupFNJa1k4fR5GdcB6emEdF"
-                  alt="eth"
-                  className={style.ethLogo}
+                  src="https://gateway.pinata.cloud/ipfs/QmY3CUTEuFcUyktqh7BEVzeFYGdiAB5KD5Fn9cey69MhEZ"
+                  alt="matic"
+                  className={style.maticLogo}
                 />
                 {collection?.volumeTraded}.8K
               </div>
