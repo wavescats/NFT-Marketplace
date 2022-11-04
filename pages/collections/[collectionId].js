@@ -10,12 +10,12 @@ import { HiDotsVertical } from "react-icons/hi";
 import NFTCard from "../../components/NFTCard";
 
 const style = {
-  bannerImageContainer: `h-[20vh] w-screen overflow-hidden flex justify-center items-center`,
+  bannerImageContainer: `h-[50vh] w-screen overflow-hidden flex justify-center items-center`,
   bannerImage: `w-full object-cover`,
-  infoContainer: `w-screen px-4`,
-  midRow: `w-full flex justify-center text-white`,
-  endRow: `w-full flex justify-end text-white`,
-  profileImg: `w-40 h-40 object-cover rounded-full border-2 border-[#202225] mt-[-4rem]`,
+  infoContainer: `w-screen px-10`,
+  midRow: `w-full justify-center text-white`,
+  endRow: ` w-full flex justify-end text-white`,
+  profileImg: `w-52 h-52 object-cover rounded-3xl border-[#fff] mt-[-4rem]`,
   socialIconsContainer: `flex text-3xl mb-[-2rem]`,
   socialIconsWrapper: `w-44`,
   socialIconsContent: `flex container justify-between text-[1.4rem] border-2 rounded-lg px-2`,
@@ -23,12 +23,12 @@ const style = {
   divider: `border-r-2`,
   title: `text-5xl font-bold mb-4`,
   createdBy: `text-lg mb-4`,
-  statsContainer: `w-[44vw] flex justify-between py-4 border border-[#151b22] rounded-xl mb-4`,
+  statsContainer: `w-[44vw] flex justify-between py-4 border border-[#151b22] rounded-xl mb-4 ml-[-2rem]`,
   collectionStat: `w-1/4`,
   statValue: `text-3xl font-bold w-full flex items-center justify-center`,
   maticLogo: `h-6 mr-2 rounded-full`,
   statName: `text-lg w-full text-center mt-1`,
-  description: `text-[#8a939b] text-xl w-max-1/4 flex-wrap mt-4`,
+  description: `mr-40 text-[#8a939b] text-xl w-max-1/4 flex-wrap mt-4`,
 };
 
 const Collection = () => {
@@ -159,14 +159,15 @@ const Collection = () => {
         <div className={style.midRow}>
           <div className={style.statsContainer}>
             <div className={style.collectionStat}>
-              <div className={style.statValue}>{nfts.length}</div>
-              <div className={style.statName}>items</div>
-            </div>
-            <div className={style.collectionStat}>
               <div className={style.statValue}>
-                {collection?.allOwners ? collection.allOwners.length : ""}
+                <img
+                  src="https://gateway.pinata.cloud/ipfs/QmY3CUTEuFcUyktqh7BEVzeFYGdiAB5KD5Fn9cey69MhEZ"
+                  alt="matic"
+                  className={style.maticLogo}
+                />
+                {collection?.volumeTraded}.8K
               </div>
-              <div className={style.statName}>owners</div>
+              <div className={style.statName}>volume traded</div>
             </div>
             <div className={style.collectionStat}>
               <div className={style.statValue}>
@@ -179,16 +180,16 @@ const Collection = () => {
               </div>
               <div className={style.statName}>floor price</div>
             </div>
+
+            <div className={style.collectionStat}>
+              <div className={style.statValue}>{nfts.length}</div>
+              <div className={style.statName}>items</div>
+            </div>
             <div className={style.collectionStat}>
               <div className={style.statValue}>
-                <img
-                  src="https://gateway.pinata.cloud/ipfs/QmY3CUTEuFcUyktqh7BEVzeFYGdiAB5KD5Fn9cey69MhEZ"
-                  alt="matic"
-                  className={style.maticLogo}
-                />
-                {collection?.volumeTraded}.8K
+                {collection?.allOwners ? collection.allOwners.length : ""}
               </div>
-              <div className={style.statName}>volume traded</div>
+              <div className={style.statName}>owners</div>
             </div>
           </div>
         </div>
