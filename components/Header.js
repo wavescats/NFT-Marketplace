@@ -18,7 +18,7 @@ const style = {
   headerIcon: `text-[#8a939b] text-3xl font-black px-4 hover:text-white cursor-pointer`,
 };
 
-const Header = () => {
+const Header = ({ connectWallet, address }) => {
   return (
     <div className={style.wrapper}>
       <Link href="/">
@@ -46,8 +46,22 @@ const Header = () => {
         <div className={style.headerIcon}>
           <CgProfile />
         </div>
-        <div className={style.headerIcon}>
-          <MdOutlineAccountBalanceWallet />
+
+        <div
+          className={style.headerIcon}
+          onClick={() => connectWallet("injected")}
+        >
+          {" "}
+          {address ? (
+            <img
+              src="https://gateway.pinata.cloud/ipfs/Qmf2HLJo8A5azxe1KqqTBAGbWsViRj5y5pFsd2mDyaqrzd"
+              width="30"
+              height="30"
+              alt=""
+            />
+          ) : (
+            <MdOutlineAccountBalanceWallet />
+          )}
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const style = {
@@ -30,7 +31,9 @@ const Main = () => {
               OpenSea is the world&apos;s first and largest NFT marketplace
             </div>
             <div className={style.ctaContainer}>
-              <button className={style.accentedButton}>Explore</button>
+              <Link href="/collections/0x8575C7f376b39B10d2a31e893ED15E7f33Be2C83">
+                <button className={style.accentedButton}>Explore</button>
+              </Link>
               <button className={style.button}>Create</button>
             </div>
           </div>

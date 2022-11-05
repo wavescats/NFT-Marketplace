@@ -17,7 +17,7 @@ export default function Home() {
 
   const welcomeUser = (userName, toastHandler = toast) => {
     toastHandler.success(
-      `Welcome back${userName !== "Unnamed" ? ` ${userName}` : ""}!`,
+      `Wallet Conneted ${userName !== "Unnamed" ? ` ${userName}` : ""}!`,
       {
         style: {
           background: "#04111d",
@@ -45,25 +45,10 @@ export default function Home() {
   return (
     <div className={style.wrapper}>
       <Toaster position="top-center" reverseOrder={false} />
-      {address ? (
-        <>
-          <Header />
-          <Main />
-        </>
-      ) : (
-        <div className={style.walletConnectWrapper}>
-          <button
-            className={style.button}
-            onClick={() => connectWallet("injected")}
-          >
-            Connect Wallet
-          </button>
-          <div className={style.details}>
-            You need Chrome to be
-            <br /> able to run this app.
-          </div>
-        </div>
-      )}
+      <>
+        <Header connectWallet={connectWallet} address={address} />
+        <Main />
+      </>
     </div>
   );
 }

@@ -28,8 +28,14 @@ const EventItem = ({ event }) => {
         />
         <div className={style.eventPriceValue}>{event.price}</div>
       </div>
-      <div className={`${style.accent} flex-[3]`}>{event.from}</div>
-      <div className={`${style.accent} flex-[3]`}>{event.to}</div>
+      <div className={`${style.accent} flex-[3]`}>
+        {event.from.slice(0, 6) +
+          " ... " +
+          event.to.slice(38, 42).toUpperCase()}
+      </div>
+      <div className={`${style.accent} flex-[3]`}>
+        {event.to.slice(0, 6) + " ... " + event.to.slice(38, 42).toUpperCase()}
+      </div>
       <div className={`${style.accent} flex-[2]`}>{event.date}</div>
     </div>
   );

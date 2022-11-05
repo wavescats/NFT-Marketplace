@@ -21,7 +21,7 @@ const style = {
   socialIconsContent: `flex container justify-between text-[1.4rem] border-2 rounded-lg px-2`,
   socialIcon: `my-2`,
   divider: `border-r-2`,
-  title: `text-5xl font-bold mb-4`,
+  title: `flex text-5xl font-bold mb-4`,
   createdBy: `text-lg mb-4`,
   statsContainer: `w-[44vw] flex justify-between py-4 border border-[#151b22] rounded-xl mb-4 ml-[-2rem]`,
   collectionStat: `w-1/4`,
@@ -148,11 +148,18 @@ const Collection = () => {
           </div>
         </div>
         <div className={style.midRow}>
-          <div className={style.title}>{collection?.title}</div>
+          <div className={style.title}>
+            {collection?.title}
+            <img
+              className="w-8 h-8 mt-2 ml-2"
+              src="https://gateway.pinata.cloud/ipfs/QmUcUVMNvUgcEt5jJiY5RAk3GbmpCk39skEeRJtyXnwxDV"
+              alt=""
+            />
+          </div>
         </div>
         <div className={style.midRow}>
           <div className={style.createdBy}>
-            Created by{" "}
+            Created by
             <span className="text-[#2081e2]">{collection?.creator}</span>
           </div>
         </div>
@@ -197,7 +204,7 @@ const Collection = () => {
           <div className={style.description}>{collection?.description}</div>
         </div>
       </div>
-      <div className="flex flex-wrap ">
+      <div className="flex flex-wrap">
         {nfts.map((nftItem, id) => (
           <NFTCard
             key={id}
