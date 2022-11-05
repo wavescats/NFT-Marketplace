@@ -28,7 +28,7 @@
 
 <div align="center">
 
-![image](https://user-images.githubusercontent.com/97342533/200131663-5e1358dd-495f-48b6-adf2-f38346746024.png)
+![](https://user-images.githubusercontent.com/97342533/200133038-7a370aec-6572-45be-b03c-0aa172ed030e.png)
 
 </div>
 
